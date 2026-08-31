@@ -2,7 +2,7 @@ public class ParkingSpot {
     private String spotId;
     private int floorNumber;
     private ParkingSpotType parkingSpotType;
-    private Vehicle vehicle;
+    public Vehicle vehicle;
 
     public ParkingSpot(String spotId,int floorNumber, ParkingSpotType parkingSpotType,Vehicle vehicle){
         this.spotId = spotId;
