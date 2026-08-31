@@ -1,2 +1,6 @@
-package PACKAGE_NAME;public class ParkingSpotType {
+public enum ParkingSpotType {
+
+    CAR_SPOT,
+    BIKE_SPOT,
+    TRUCK_SPOT
 }
