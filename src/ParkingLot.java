@@ -3,18 +3,18 @@ import java.util.HashMap;
 public class ParkingLot {
 
     private int numberOfFloors;
-
+    private HashMap<Integer,Floor> floors;
 
     public ParkingLot(int numberOfFloors){
-        this.numberOfFloors = numberOfFloors;
-    }
-
-    public void parkVehicle(){
-        HashMap<Integer,Floor> floors = new HashMap<>();
-//        Floor floor = new Floor();
-        for (int i = 0;i<numberOfFloors;i++){
+        floors = new HashMap<>();
+        for(int i=1;i<=10;i++){
             floors.put(i,new Floor(i));
         }
+    }
+
+
+    public void parkVehicle(){
+
     }
 
 }
