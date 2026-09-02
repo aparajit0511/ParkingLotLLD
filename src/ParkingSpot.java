@@ -38,17 +38,9 @@ public class ParkingSpot {
     }
 
     public void parkAVehicle(Vehicle vehicle){
-       if(vehicle.getVehicleType() == VehicleType.CAR){
-           // do something
-       } else if (vehicle.getVehicleType() == VehicleType.TRUCK) {
-           // do something
-       } else if (vehicle.getVehicleType() == VehicleType.BIKE) {
-           // do something
-       }
     }
 
     public void unparkAVehicle(Vehicle vehicle){
-     vehicle = null;
     }
 
 }
