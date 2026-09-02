@@ -1,24 +1,32 @@
 import java.util.HashMap;
+import java.util.Map;
 
 public class Floor {
-    private int floorNumber;
+    private int numberOfSpots;
     private HashMap<String,ParkingSpot> spots;
 
-    public Floor(int floorNumber){
-        this.floorNumber = floorNumber;
+    public Floor(int numberOfSpots){
+        this.numberOfSpots = numberOfSpots;
         spots = new HashMap<>();
+        for(int i=1;i<=numberOfSpots;i++){
+            char letter = (char) ('A' + i / 2);
+            int number = (i % 2) + 1;
+
+            String spotId = "" + letter + number;
+            spots.put(spotId,new ParkingSpot(spotId,i,null,null));
+        }
     }
 
-    public int getFloorNumber() {
-        return floorNumber;
-    }
-
-    public void setFloorNumber(int floorNumber) {
-        this.floorNumber = floorNumber;
-    }
-
-    public void findAvailableSpot(int key){
-
+    public String findAvailableSpot(String vehicleType){
+        for(Map.Entry<String,ParkingSpot> spots: spots.entrySet()){
+            String keySpotId = spots.getKey();
+            ParkingSpot parkingSpot = spots.getValue();
+            String checkVehicleType = String.valueOf(parkingSpot.getParkingSpotType());
+            if ( checkVehicleType == null){
+                return keySpotId;
+            }
+        }
+        return "No parking space available";
     }
 }
 
