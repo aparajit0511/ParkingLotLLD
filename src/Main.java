@@ -5,6 +5,6 @@ public class Main {
         Vehicle vehicle = new Vehicle("AXB11",VehicleType.valueOf("CAR"));
 
         ParkingLot parkingLot = new ParkingLot(10);
-        parkingLot.parkVehicle();
+        parkingLot.parkVehicle(vehicle);
     }
 }

@@ -17,13 +17,8 @@ public class Floor {
         this.floorNumber = floorNumber;
     }
 
-    public HashMap<String, ParkingSpot> getSpots() {
-        return spots;
-    }
+    public void findAvailableSpot(int key){
 
-    public void setSpots(HashMap<String, ParkingSpot> spots) {
-        this.spots = spots;
     }
-
 }
 

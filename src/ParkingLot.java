@@ -1,20 +1,25 @@
 import java.util.HashMap;
+import java.util.Map;
 
 public class ParkingLot {
 
-    private int numberOfFloors;
     private HashMap<Integer,Floor> floors;
 
     public ParkingLot(int numberOfFloors){
         floors = new HashMap<>();
-        for(int i=1;i<=10;i++){
+        for(int i=1;i<=numberOfFloors;i++){
             floors.put(i,new Floor(i));
         }
     }
 
 
-    public void parkVehicle(){
-
+    public void parkVehicle(Vehicle vehicle){
+        for(Map.Entry<Integer,Floor> floormap:floors.entrySet()){
+            Integer key = floormap.getKey();
+            Floor floor = floormap.getValue();
+            floor.findAvailableSpot(key);
+            System.out.println(floor);
+        }
     }
 
 }
