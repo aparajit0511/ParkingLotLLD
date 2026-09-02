@@ -17,16 +17,16 @@ public class Floor {
         }
     }
 
-    public String findAvailableSpot(String vehicleType){
+    public ParkingSpot findAvailableSpot(String vehicleType){
         for(Map.Entry<String,ParkingSpot> spots: spots.entrySet()){
             String keySpotId = spots.getKey();
             ParkingSpot parkingSpot = spots.getValue();
             String checkVehicleType = String.valueOf(parkingSpot.getParkingSpotType());
             if ( checkVehicleType == null){
-                return keySpotId;
+                return parkingSpot;
             }
         }
-        return "No parking space available";
+        return null;
     }
 }
 

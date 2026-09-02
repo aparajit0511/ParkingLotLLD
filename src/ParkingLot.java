@@ -16,31 +16,31 @@ public class ParkingLot {
 
     public void parkVehicle(Vehicle vehicle){
 
-        HashMap<VehicleType, ParkingSpotType> typeMap = new HashMap<>();
+//        HashMap<VehicleType, ParkingSpotType> typeMap = new HashMap<>();
+//
+//        typeMap.put(VehicleType.CAR, ParkingSpotType.CAR_SPOT);
+//        typeMap.put(VehicleType.BIKE, ParkingSpotType.BIKE_SPOT);
+//        typeMap.put(VehicleType.TRUCK, ParkingSpotType.TRUCK_SPOT);
 
-        typeMap.put(VehicleType.CAR, ParkingSpotType.CAR_SPOT);
-        typeMap.put(VehicleType.BIKE, ParkingSpotType.BIKE_SPOT);
-        typeMap.put(VehicleType.TRUCK, ParkingSpotType.TRUCK_SPOT);
-
-        String spotId = "";
-        int floorNumber = 0;
+//        String spotId = "";
+//        int floorNumber = 0;
         String vehicleType = String.valueOf(vehicle.getVehicleType());
 //        typeMap.get(vehicle.getVehicleType());
         for(Map.Entry<Integer,Floor> floormap:floors.entrySet()){
             Integer key = floormap.getKey();
             Floor floor = floormap.getValue();
-            if(!Objects.equals(floor.findAvailableSpot(vehicleType), "No parking space available")){
-                spotId = floor.findAvailableSpot(vehicleType);
-                floorNumber = key;
+            ParkingSpot parkingSpot = floor.findAvailableSpot(vehicleType);
+            if(parkingSpot != null){
+                parkingSpot.parkAVehicle(vehicle);
+                
+//                floorNumber = key;
+            }else{
+                return ;
             }
 //             spotId = floor.findAvailableSpot(vehicleType);
             System.out.println(floor);
         }
-
-        if(!Objects.equals(spotId, "No parking space available")){
-            ParkingSpot parkingSpot = new ParkingSpot(spotId,floorNumber, typeMap.get(vehicle.getVehicleType()),vehicle);
-            parkingSpot.parkAVehicle(vehicle);
-        }
+        
     }
 
 }
