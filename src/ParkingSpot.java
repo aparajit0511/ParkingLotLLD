@@ -37,26 +37,18 @@ public class ParkingSpot {
         this.parkingSpotType = parkingSpotType;
     }
 
-    public boolean isOccupied(Vehicle vehicle){
-        if(vehicle == null){
-            return false;
-        }
-        return true;
+    public void parkAVehicle(Vehicle vehicle){
+       if(vehicle.getVehicleType() == VehicleType.CAR){
+           // do something
+       } else if (vehicle.getVehicleType() == VehicleType.TRUCK) {
+           // do something
+       } else if (vehicle.getVehicleType() == VehicleType.BIKE) {
+           // do something
+       }
     }
 
-    public String parkAVehicle(Vehicle vehicle){
-        if(!isOccupied(vehicle)){
-            ParkingTicket parkingTicket = new ParkingTicket("TCK123",vehicle,getParkingSpotType(), LocalDateTime.now());
-            return parkingTicket.getTicketId();
-        }
-        return "Occupied";
-    }
-
-    public boolean unparkAVehicle(Vehicle vehicle){
-        if(isOccupied(vehicle)){
-            return this.vehicle == null;
-        }
-        return false;
+    public void unparkAVehicle(Vehicle vehicle){
+     vehicle = null;
     }
 
 }
