@@ -6,5 +6,7 @@ public class Main {
 
         ParkingLot parkingLot = new ParkingLot(10);
         parkingLot.parkVehicle(vehicle);
+
+
     }
 }
