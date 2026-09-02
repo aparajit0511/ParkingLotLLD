@@ -38,6 +38,7 @@ public class ParkingSpot {
     }
 
     public void parkAVehicle(Vehicle vehicle){
+
     }
 
     public void unparkAVehicle(Vehicle vehicle){

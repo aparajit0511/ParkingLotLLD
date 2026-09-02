@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class ParkingLot {
 
@@ -14,12 +15,31 @@ public class ParkingLot {
 
 
     public void parkVehicle(Vehicle vehicle){
+
+        HashMap<VehicleType, ParkingSpotType> typeMap = new HashMap<>();
+
+        typeMap.put(VehicleType.CAR, ParkingSpotType.CAR_SPOT);
+        typeMap.put(VehicleType.BIKE, ParkingSpotType.BIKE_SPOT);
+        typeMap.put(VehicleType.TRUCK, ParkingSpotType.TRUCK_SPOT);
+
+        String spotId = "";
+        int floorNumber = 0;
         String vehicleType = String.valueOf(vehicle.getVehicleType());
+//        typeMap.get(vehicle.getVehicleType());
         for(Map.Entry<Integer,Floor> floormap:floors.entrySet()){
             Integer key = floormap.getKey();
             Floor floor = floormap.getValue();
-            String spotId = floor.findAvailableSpot(vehicleType);
+            if(!Objects.equals(floor.findAvailableSpot(vehicleType), "No parking space available")){
+                spotId = floor.findAvailableSpot(vehicleType);
+                floorNumber = key;
+            }
+//             spotId = floor.findAvailableSpot(vehicleType);
             System.out.println(floor);
+        }
+
+        if(!Objects.equals(spotId, "No parking space available")){
+            ParkingSpot parkingSpot = new ParkingSpot(spotId,floorNumber, typeMap.get(vehicle.getVehicleType()),vehicle);
+            parkingSpot.parkAVehicle(vehicle);
         }
     }
 
