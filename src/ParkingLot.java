@@ -25,6 +25,8 @@ public class ParkingLot {
         ParkingSpot parkingSpot = null;
                 String vehicleType = String.valueOf(vehicle.getVehicleType());
                 ParkingSpotType spotType = typeMap.get(vehicle.getVehicleType());
+        ParkingTicket parkingTicket = new ParkingTicket(vehicle,typeMap.get(vehicle.getVehicleType()));
+        String ticketId = "";
         for(Map.Entry<Integer,Floor> floormap:floors.entrySet()){
             Integer key = floormap.getKey();
             Floor floor = floormap.getValue();
@@ -33,20 +35,15 @@ public class ParkingLot {
             if(parkingSpot != null){
                 parkingSpot.parkAVehicle(vehicle);
                 System.out.println("Spotid: "+parkingSpot.getSpotId());
+                ticketId = parkingTicket.generateTicket();
+                ticketMap.put(ticketId,parkingSpot);
                 break; // to come out of the loop and create a ticket
 
-            }else{
-                return "";
             }
         }
 
-        ParkingTicket parkingTicket = new ParkingTicket(vehicle,typeMap.get(vehicle.getVehicleType()));
-        String ticketId = parkingTicket.generateTicket();
-        ticketMap.put(ticketId,parkingSpot);
-
         System.out.println(ticketMap);
         return ticketId;
-        
     }
 
 
