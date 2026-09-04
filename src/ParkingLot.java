@@ -24,10 +24,11 @@ public class ParkingLot {
     public String parkVehicle(Vehicle vehicle){
         ParkingSpot parkingSpot = null;
                 String vehicleType = String.valueOf(vehicle.getVehicleType());
+                ParkingSpotType spotType = typeMap.get(vehicle.getVehicleType());
         for(Map.Entry<Integer,Floor> floormap:floors.entrySet()){
             Integer key = floormap.getKey();
             Floor floor = floormap.getValue();
-            parkingSpot = floor.findAvailableSpot(vehicleType);
+            parkingSpot = floor.findAvailableSpot(vehicleType,spotType);
 
             if(parkingSpot != null){
                 parkingSpot.parkAVehicle(vehicle);

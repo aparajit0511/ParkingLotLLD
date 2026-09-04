@@ -28,13 +28,13 @@ public class Floor {
         }
     }
 
-    public ParkingSpot findAvailableSpot(String vehicleType){
+    public ParkingSpot findAvailableSpot(String vehicleType,ParkingSpotType spotType){
         for(Map.Entry<String,ParkingSpot> spots: spots.entrySet()){
             String keySpotId = spots.getKey();
             ParkingSpot parkingSpot = spots.getValue();
             System.out.println(keySpotId+parkingSpot);
 //            String checkVehicleType = String.valueOf(parkingSpot.getParkingSpotType());
-            if(parkingSpot.getVehicle() == null){
+            if(parkingSpot.getVehicle() == null && spotType == parkingSpot.getParkingSpotType() ){
 //            if ( checkVehicleType == null){
                 return parkingSpot;
             }
