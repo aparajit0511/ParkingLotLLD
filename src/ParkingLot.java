@@ -6,6 +6,8 @@ public class ParkingLot {
     private HashMap<Integer,Floor> floors;
     private HashMap<VehicleType, ParkingSpotType> typeMap = new HashMap<>();
 
+    private HashMap<String,ParkingSpot> ticketMap = new HashMap<>();
+
     public ParkingLot(int numberOfFloors){
         floors = new HashMap<>();
         for(int i=1;i<=numberOfFloors;i++){
@@ -20,12 +22,12 @@ public class ParkingLot {
 
 
     public String parkVehicle(Vehicle vehicle){
-
-        String vehicleType = String.valueOf(vehicle.getVehicleType());
+        ParkingSpot parkingSpot = null;
+                String vehicleType = String.valueOf(vehicle.getVehicleType());
         for(Map.Entry<Integer,Floor> floormap:floors.entrySet()){
             Integer key = floormap.getKey();
             Floor floor = floormap.getValue();
-            ParkingSpot parkingSpot = floor.findAvailableSpot(vehicleType);
+            parkingSpot = floor.findAvailableSpot(vehicleType);
 
             if(parkingSpot != null){
                 parkingSpot.parkAVehicle(vehicle);
@@ -38,8 +40,11 @@ public class ParkingLot {
         }
 
         ParkingTicket parkingTicket = new ParkingTicket(vehicle,typeMap.get(vehicle.getVehicleType()));
+        String ticketId = parkingTicket.generateTicket();
+        ticketMap.put(ticketId,parkingSpot);
 
-        return parkingTicket.generateTicket();
+        System.out.println(ticketMap);
+        return ticketId;
         
     }
 
@@ -47,5 +52,7 @@ public class ParkingLot {
 
     public void unparkVehicle(String ticket) {
 
+        ParkingSpot parkingSpot = ticketMap.get(ticket);
+        parkingSpot.unparkAVehicle();
     }
 }

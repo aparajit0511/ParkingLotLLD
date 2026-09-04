@@ -45,7 +45,8 @@ public class ParkingSpot {
      this.vehicle = vehicle;
     }
 
-    public void unparkAVehicle(Vehicle vehicle){
+    public void unparkAVehicle(){
+        this.vehicle = null;
     }
 
 }
