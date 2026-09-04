@@ -33,6 +33,10 @@ public class ParkingSpot {
         return this.parkingSpotType;
     }
 
+    public Vehicle getVehicle(){
+        return vehicle;
+    }
+
     public void setParkingSpotType(ParkingSpotType parkingSpotType){
         this.parkingSpotType = parkingSpotType;
     }

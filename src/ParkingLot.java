@@ -1,6 +1,5 @@
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class ParkingLot {
 
@@ -20,25 +19,33 @@ public class ParkingLot {
 
 
 
-    public void parkVehicle(Vehicle vehicle){
+    public String parkVehicle(Vehicle vehicle){
 
         String vehicleType = String.valueOf(vehicle.getVehicleType());
         for(Map.Entry<Integer,Floor> floormap:floors.entrySet()){
             Integer key = floormap.getKey();
             Floor floor = floormap.getValue();
             ParkingSpot parkingSpot = floor.findAvailableSpot(vehicleType);
+
             if(parkingSpot != null){
                 parkingSpot.parkAVehicle(vehicle);
+                System.out.println("Spotid: "+parkingSpot.getSpotId());
                 break; // to come out of the loop and create a ticket
 
             }else{
-                return ;
+                return "";
             }
         }
 
         ParkingTicket parkingTicket = new ParkingTicket(vehicle,typeMap.get(vehicle.getVehicleType()));
-        String ticket = parkingTicket.generateTicket();
+
+        return parkingTicket.generateTicket();
         
     }
 
+
+
+    public void unparkVehicle(String ticket) {
+
+    }
 }

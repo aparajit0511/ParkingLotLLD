@@ -32,8 +32,10 @@ public class Floor {
         for(Map.Entry<String,ParkingSpot> spots: spots.entrySet()){
             String keySpotId = spots.getKey();
             ParkingSpot parkingSpot = spots.getValue();
-            String checkVehicleType = String.valueOf(parkingSpot.getParkingSpotType());
-            if ( checkVehicleType == null){
+            System.out.println(keySpotId+parkingSpot);
+//            String checkVehicleType = String.valueOf(parkingSpot.getParkingSpotType());
+            if(parkingSpot.getVehicle() == null){
+//            if ( checkVehicleType == null){
                 return parkingSpot;
             }
         }

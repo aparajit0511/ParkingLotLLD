@@ -29,7 +29,9 @@ public class ParkingTicket {
     }
 
     public String generateTicket(){
+        setTicketId();
         ticketId = getTicketId();
+        setEntryTime();
         entryTime = getEntryTime();
         return ticketId + " " + entryTime;
     }
